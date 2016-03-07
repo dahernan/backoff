@@ -1,8 +1,8 @@
-== Backoff library with maximum number of calls
+## Backoff library with maximum number of calls
 
 Usage:
 
-Please do copy&paste the code, is just one function, don't create more dependencies :)
+Please do copy & paste the code, is just one function, don't create more dependencies :)
 
 ```
 // Do retries the function f backing off the double of time each retry until a successfully call is made.
