@@ -18,13 +18,13 @@ func Do(initialBackoff, maxBackoff time.Duration, maxCalls int, f func() error) 
 			return nil
 		}
 		calls++
-		if calls >= maxCalls && maxCalls != 0 {
+		if (calls >= maxCalls) && (maxCalls != 0) {
 			return err
 		}
 		switch {
 		case backoff == 0:
 			backoff = initialBackoff
-		case backoff > maxBackoff && maxBackoff != 0:
+		case (backoff >= maxBackoff) && (maxBackoff != 0):
 			backoff = maxBackoff
 		default:
 			backoff *= 2
