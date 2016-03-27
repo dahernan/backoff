@@ -10,7 +10,8 @@ func TestBackoff(t *testing.T) {
 	okAfter := 5
 	calls := 0
 
-	err := Do(100*time.Millisecond, 1*time.Second, 10, func() error {
+	b := NewDoubleTimeBackoff(100*time.Millisecond, 1*time.Second, 10)
+	err := b.Do(func() error {
 		calls++
 		if calls > okAfter {
 			return nil
@@ -29,7 +30,8 @@ func TestBackoffMaxCalls(t *testing.T) {
 	okAfter := 5
 	calls := 0
 
-	err := Do(100*time.Millisecond, 1*time.Second, 2, func() error {
+	b := NewDoubleTimeBackoff(100*time.Millisecond, 1*time.Second, 2)
+	err := b.Do(func() error {
 		calls++
 		if calls > okAfter {
 			return nil
